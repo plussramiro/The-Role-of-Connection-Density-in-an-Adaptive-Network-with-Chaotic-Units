@@ -1,0 +1,6 @@
+numpy==1.26.4
+pandas==2.2.1
+networkx==3.2.1
+python-louvain==0.16
+numba==0.60.0
+matplotlib==3.8.3
