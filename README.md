@@ -60,11 +60,19 @@ python main.py
 
 ---
 
-## 📊 Analysis
+## 📊 Jupyter Notebook: `analysis.ipynb`
 
-- Run `analysis.ipynb` to generate the main figures and metrics reported in the paper.
-- Network properties such as clustering coefficient, average shortest path, small-world index, and Louvain cluster structure are computed from pre-simulated matrices stored in `results/`.
+This notebook allows you to **reproduce and visualize all the metrics and figures** presented in the paper without the need to re-run the simulations.  
 
+### Contents
+- Automatic loading of adjacency matrices stored in `results/`.
+- Computation of:
+  - Average clustering coefficient.
+  - Average shortest path length.
+  - *Small-world* index.
+  - Modular structure via Louvain (cluster sizes and number of clusters).
+  - Degree distribution.
+- Generation of the main plots used in the manuscript.
 ---
 
 ## 🔧 Dependencies
