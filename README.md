@@ -73,6 +73,15 @@ This notebook allows you to **reproduce and visualize all the metrics and figure
   - Modular structure via Louvain (cluster sizes and number of clusters).
   - Degree distribution.
 - Generation of the main plots used in the manuscript.
+
+> **Note:** All scripts and notebooks assume they are executed from the root of the repository, as the paths to `results/` and `plots_paper/` are relative to the current working directory.  
+> For example:
+> ```bash
+> cd The-Role-of-Connection-Density-in-an-Adaptive-Network-with-Chaotic-Units
+> jupyter notebook analysis.ipynb
+> ```
+> Running it from another location may cause file or folder not found errors.
+
 ---
 
 ## 🔧 Dependencies
