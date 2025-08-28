@@ -101,7 +101,8 @@ All dependencies are listed in `requirements.txt`.
 If you have questions or want to contribute, feel free to reach out:
 
 **Ramiro Plüss**  
-[Email](mailto:rpluss@itba.edu.ar)  
+
+[Email](mailto:rpluss@itba.edu.ar)
 
 [LinkedIn Profile](https://www.linkedin.com/in/ramiropluss/)
 
