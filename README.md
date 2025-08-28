@@ -4,8 +4,7 @@ This repository contains the source code, simulation data, and analysis tools fo
 
 **“The Role of Connection Density in an Adaptive Network with Chaotic Units”**
 
-In this work, we investigate how the average degree of connectivity, considered as a density parameter, shapes the global dynamics and structural properties of adaptive networks composed of chaotic units. Building upon the model introduced by Gong and van Leeuwen [(EPL, 2004)](https://iopscience.iop.org/article/10.1209/epl/i2003-10287-7), originally motivated by cortical self-organization, we explore how network topology evolves through adaptive rewiring. Our results highlight changes in small-worldness, clustering, and modular organization — phenomena relevant to neural systems.
-
+In this work, we investigate how the average degree of connectivity, considered as a density parameter, shapes the global dynamics and structural properties of adaptive networks composed of chaotic units. Inspired by the chaotic map networks of Kaneko [(Phys. Rev. Lett., 1989)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.63.219) and [(Physica D, 1994)](https://www.sciencedirect.com/science/article/abs/pii/0167278994902747), and subsequent adaptive extensions such as Gong and van Leeuwen [(EPL, 2004)](https://iopscience.iop.org/article/10.1209/epl/i2003-10287-7), we focus on how varying connection density drives the emergence of small-worldness, clustering, and modular organization, phenomena relevant to neural systems.
 
 ---
 
