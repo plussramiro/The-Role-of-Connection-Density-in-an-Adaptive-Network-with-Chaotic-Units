@@ -102,17 +102,16 @@ If you have questions or want to contribute, feel free to reach out:
 
 **Ramiro Plüss**  
 
-[Email](mailto:rpluss@itba.edu.ar)
+Email: rpluss@itba.edu.ar
 
-[LinkedIn Profile](https://www.linkedin.com/in/ramiropluss/)
+LinkedIn: [https://www.linkedin.com/in/ramiropluss/](https://www.linkedin.com/in/ramiropluss/)
 
-[GitHub Profile](https://github.com/ramirop2021)  
+GitHub: [https://github.com/ramirop2021](https://github.com/ramirop2021)  
 
 ---
 
 ## 📄 Citation
 
-The accompanying research paper is available as a preprint on arXiv:  
-https://arxiv.org/abs/2505.11437
+The accompanying research paper is available as a preprint on arXiv: https://arxiv.org/abs/2505.11437
 
 
