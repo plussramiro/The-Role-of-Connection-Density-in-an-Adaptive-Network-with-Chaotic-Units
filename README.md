@@ -112,6 +112,11 @@ GitHub: [https://github.com/ramirop2021](https://github.com/ramirop2021)
 
 ## 📄 Citation
 
-The accompanying research paper is available as a preprint on arXiv: https://arxiv.org/abs/2505.11437
+If you use this code or the data provided in this work, please cite the associated research paper:
+
+Ramiro Plüss, Pablo Martín Gleiser.  
+"The Role of Connection Density in an Adaptive Network with Chaotic Units."  
+*arXiv preprint* [arXiv:2505.11437](https://arxiv.org/abs/2505.11437)
+
 
 
