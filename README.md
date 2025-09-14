@@ -118,5 +118,12 @@ Ramiro Plüss, Pablo Martín Gleiser.
 "The Role of Connection Density in an Adaptive Network with Chaotic Units."  
 *arXiv preprint* [arXiv:2505.11437](https://arxiv.org/abs/2505.11437)
 
+---
+
+## 📑 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+
 
 
