@@ -60,32 +60,48 @@ def main():
                 M0 = np.triu(M0, 1)
                 M0 += M0.T
                 M = np.sum(M0, axis=1)
+                X0 = np.random.uniform(low=-1.0, high=1.0, size=N)
+                snapshot_rng = np.random.default_rng()
 
-                step = -1
+                def save_snapshot(step, adjacency, states, node_count):
+                    """Save a topology and states evaluated for that same topology."""
+                    C, L, omega = compute_network_metrics(adjacency)
+                    s1, s2, s_mean, s_std, n_s = compute_louvain_cluster_metrics(adjacency)
 
-                while step < time_steps:
-                    step += 1
-                    X0 = np.random.uniform(low=-1.0, high=1.0, size=N)
+                    print(f"epsilon: {eps:.3f}, step: {step}, clustering: {C:.4f}, path length: {L:.4f}, "
+                          f"omega: {omega:.4f}, s1: {s1}, s2: {s2}, <s>: {s_mean:.2f}, std: {s_std:.2f}, "
+                          f"n_s: {n_s}, simulation: {sim + sim_real}, N = {node_count}")
 
-                    for _ in range(T): 
-                        Y = (1.0 - eps) * f(X0, a) + vector(M0, X0, M, eps, a)
-                        X0 = Y
+                    outfile.write(f"{eps},{sim + sim_real},{step},{C},{L},{omega},"
+                                  f"{s1},{s2},{s_mean},{s_std},{n_s},{node_count}\n")
 
-                    M0, Y, M, N, X0 = update_adjacency_matrix(M0, Y, M, N, X0)
+                    analyze_and_save_metrics(adjacency, states, eps, step,
+                                             save_matrix, save_states, simulation_dir, node_count)
+
+                # step_0 is the untouched initial pair (M(0), x(0)): no dynamics and no rewiring.
+                save_snapshot(0, M0, X0, N)
+
+                for step in range(1, time_steps + 1):
+                    # Preserve the original protocol: node states are initialized anew
+                    # for every adaptive cycle (the first cycle uses the saved x(0)).
+                    if step > 1:
+                        X0 = np.random.uniform(low=-1.0, high=1.0, size=N)
+
+                    for _ in range(T):
+                        X0 = (1.0 - eps) * f(X0, a) + vector(M0, X0, M, eps, a)
+
+                    # Complete adaptive step t and obtain M(t).
+                    M0, _, M, N, X0 = update_adjacency_matrix(M0, X0, M, N, X0)
 
                     if step % 1000 == 0:
-                        C, L, omega = compute_network_metrics(M0)
-                        s1, s2, s_mean, s_std, n_s = compute_louvain_cluster_metrics(M0)
+                        # Evaluate the archived state directly on M(t). This keeps
+                        # matrix_step_t and states_step_t synchronized.
+                        snapshot_states = snapshot_rng.uniform(low=-1.0, high=1.0, size=N)
+                        for _ in range(T):
+                            snapshot_states = ((1.0 - eps) * f(snapshot_states, a)
+                                               + vector(M0, snapshot_states, M, eps, a))
 
-                        print(f"epsilon: {eps:.3f}, step: {step}, clustering: {C:.4f}, path length: {L:.4f}, "
-                              f"omega: {omega:.4f}, s1: {s1}, s2: {s2}, <s>: {s_mean:.2f}, std: {s_std:.2f}, "
-                              f"n_s: {n_s}, simulation: {sim + sim_real}, N = {N}")
-
-                        outfile.write(f"{eps},{sim + sim_real},{step},{C},{L},{omega},"
-                                      f"{s1},{s2},{s_mean},{s_std},{n_s},{N}\n")
-
-                        analyze_and_save_metrics(M0, X0, eps, step,
-                                                 save_matrix, save_states, simulation_dir, N)
+                        save_snapshot(step, M0, snapshot_states, N)
 
         print("Done.")
 

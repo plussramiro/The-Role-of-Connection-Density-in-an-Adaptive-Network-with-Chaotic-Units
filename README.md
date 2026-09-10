@@ -154,13 +154,19 @@ python main.py
 New simulation outputs are written to folders named according to the connection probability:
 
 ```text
-results_p003/
-results_p006/
-results_p012/
-results_p018/
+results_p0.030/
+results_p0.060/
+results_p0.120/
+results_p0.180/
 ```
 
 Each output folder contains separate directories for the independent realizations and their corresponding adjacency matrices, node states, and network metrics.
+
+The `step_0` files contain the untouched initial adjacency matrix and initial
+node states, before any dynamical iteration or rewiring. At every later saved
+adaptive step `t`, `matrix_*_step_t.txt` and `states_*_step_t.txt` form a
+synchronized snapshot: the saved states are evaluated directly on the saved
+matrix `M(t)`.
 
 Because random seeds were not fixed or recorded, rerunning the simulations generates independent realizations of the same computational protocol rather than exact replicas of individual stochastic trajectories.
 
@@ -178,10 +184,10 @@ The analysis notebook expects the manuscript data to follow the structure:
 
 ```text
 results/
-  results_p003/
-  results_p006/
-  results_p012/
-  results_p018/
+  results_p0.030/
+  results_p0.060/
+  results_p0.120/
+  results_p0.180/
 ```
 
 Each density folder contains independent realizations and their saved network and state data.
@@ -231,9 +237,11 @@ plots_paper/fig1/       Community-level temporal metrics
 plots_paper/fig2/       Clustering, path length, and small-world index
 plots_paper/fig3/       Degree distributions
 plots_paper/fig4/       Node and edge betweenness distributions
-plots_paper/fig5/       Community structure and node-state snapshots
-plots_paper/fig6/       Representative intermediate-density case
-plots_paper/fig7/       Representative highest-density case
+plots_paper/fig5/       Community structure and node-state snapshots for <k> = 18
+plots_paper/fig6/       Pairwise state-distance and node-state distributions for <k> = 18
+plots_paper/fig7/       Community structure and node-state snapshots for <k> = 36
+plots_paper/fig8/       Community structure and node-state snapshots for <k> = 54
+plots_paper/fig9/       Pairwise state-distance and node-state distributions for <k> = 54
 ```
 
 The analyses include:
@@ -248,6 +256,8 @@ The analyses include:
 - Node and edge betweenness distributions.
 - Louvain community partitions.
 - Representative structural and dynamical snapshots.
+- Within- and between-community pairwise state-distance distributions.
+- Node-state distributions at selected adaptive time steps.
 
 ---
 
